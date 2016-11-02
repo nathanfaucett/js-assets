@@ -24,12 +24,14 @@ function Asset() {
 Class.extend(Asset, "assets.Asset");
 AssetPrototype = Asset.prototype;
 
-AssetPrototype.construct = function(name, src) {
+AssetPrototype.construct = function(options) {
 
     ClassPrototype.construct.call(this);
 
-    this.name = name;
-    this.src = src;
+    options = options || {};
+
+    this.name = options.name || null;
+    this.src = options.src || null;
 
     return this;
 };
