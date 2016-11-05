@@ -18,7 +18,7 @@ function TextAsset() {
 Asset.extend(TextAsset, "assets.TextAsset");
 TextAssetPrototype = TextAsset.prototype;
 
-TextAssetPrototype.load = function(src, callback) {
+TextAssetPrototype.loadSrc = function(src, callback) {
     request.get(src, {
         requestHeaders: REQUEST_HEADERS,
         success: function onSuccess(response) {

@@ -56,12 +56,12 @@ AssetPrototype.parse = function(data) {
     return data;
 };
 
-AssetPrototype.load = function(src, callback) {
-    callback(new Error("Asset.load(callback) needs is not defined for " + this));
+AssetPrototype.loadSrc = function(src, callback) {
+    callback(new Error("Asset.load(callback) is not defined for " + this));
     return this;
 };
 
-AssetPrototype._load = function(callback) {
+AssetPrototype.load = function(callback) {
     var _this = this,
         src = this.src;
 

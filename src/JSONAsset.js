@@ -18,7 +18,7 @@ function JSONAsset() {
 Asset.extend(JSONAsset, "assets.JSONAsset");
 JSONAssetPrototype = JSONAsset.prototype;
 
-JSONAssetPrototype.load = function(src, callback) {
+JSONAssetPrototype.loadSrc = function(src, callback) {
     request.get(src, {
         requestHeaders: REQUEST_HEADERS,
         success: function onSuccess(response) {
