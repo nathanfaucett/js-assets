@@ -81,7 +81,7 @@ AssetPrototype.load = function(callback) {
     } else if (isObject(src)) {
         Asset_loadObject(this, src, finalCallback);
     } else {
-        this.load(src, function onLoad(error, data) {
+        this.loadSrc(src, function onLoad(error, data) {
             if (error) {
                 finalCallback(error);
             } else {
@@ -110,7 +110,7 @@ function Asset_loadArray(_this, srcs, callback) {
     }
 
     arrayForEach(srcs, function onEach(src, index) {
-        _this.load(src, function onLoad(error, value) {
+        _this.loadSrc(src, function onLoad(error, value) {
             if (error) {
                 done(error);
             } else {
@@ -139,7 +139,7 @@ function Asset_loadObject(_this, srcs, callback) {
     }
 
     objectForEach(srcs, function onEach(src, key) {
-        _this.load(src, function onLoad(error, value) {
+        _this.loadSrc(src, function onLoad(error, value) {
             if (error) {
                 done(error);
             } else {
