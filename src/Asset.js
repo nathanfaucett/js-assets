@@ -58,7 +58,7 @@ AssetPrototype.parse = function(data) {
 };
 
 AssetPrototype.loadSrc = function(src, callback) {
-    callback(new Error("Asset.load(callback) is not defined for " + this));
+    callback(new Error("Asset.loadSrc(callback) is not defined for " + this));
     return this;
 };
 
