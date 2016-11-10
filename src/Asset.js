@@ -2,6 +2,7 @@ var Class = require("@nathanfaucett/class"),
     keys = require("@nathanfaucett/keys"),
     isArray = require("@nathanfaucett/is_array"),
     isObject = require("@nathanfaucett/is_object"),
+    isString = require("@nathanfaucett/is_string"),
     arrayForEach = require("@nathanfaucett/array-for_each"),
     objectForEach = require("@nathanfaucett/object-for_each");
 
@@ -80,7 +81,7 @@ AssetPrototype.load = function(callback) {
         Asset_loadArray(this, src, finalCallback);
     } else if (isObject(src)) {
         Asset_loadObject(this, src, finalCallback);
-    } else {
+    } else if (isString(src)) {
         this.loadSrc(src, function onLoad(error, data) {
             if (error) {
                 finalCallback(error);
@@ -88,6 +89,8 @@ AssetPrototype.load = function(callback) {
                 finalCallback(undefined, _this.parse(data));
             }
         });
+    } else {
+        finalCallback(undefined, this.data);
     }
 
     return this;
