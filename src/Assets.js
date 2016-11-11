@@ -33,14 +33,15 @@ AssetsPrototype.destructor = function() {
         hash = this._hash,
         i = -1,
         il = array.length - 1,
-        asset;
+        asset, name;
 
     ClassPrototype.destructor.call(this);
 
     while (i++ < il) {
         asset = array[i];
+        name = asset.name;
         asset.destructor();
-        delete hash[asset.name];
+        delete hash[name];
     }
     this._notLoaded.length = array.length = 0;
 
