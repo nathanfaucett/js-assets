@@ -40,12 +40,9 @@ AssetsPrototype.destructor = function() {
     while (i++ < il) {
         asset = array[i];
         asset.destructor();
-
-        array.splice(i, 1);
         delete hash[asset.name];
     }
-
-    this._notLoaded.length = 0;
+    this._notLoaded.length = array.length = 0;
 
     return this;
 };
