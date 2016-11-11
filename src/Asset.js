@@ -4,7 +4,8 @@ var Class = require("@nathanfaucett/class"),
     isObject = require("@nathanfaucett/is_object"),
     isString = require("@nathanfaucett/is_string"),
     arrayForEach = require("@nathanfaucett/array-for_each"),
-    objectForEach = require("@nathanfaucett/object-for_each");
+    objectForEach = require("@nathanfaucett/object-for_each"),
+    isNullOrUndefined = require("@nathanfaucett/is_null_or_undefined");
 
 
 var ClassPrototype = Class.prototype,
@@ -18,6 +19,7 @@ function Asset() {
 
     Class.call(this);
 
+    this.assets = null;
     this.name = null;
     this.src = null;
     this.data = null;
@@ -41,6 +43,7 @@ AssetPrototype.destructor = function() {
 
     ClassPrototype.destructor.call(this);
 
+    this.assets = null;
     this.name = null;
     this.src = null;
     this.data = null;
@@ -49,7 +52,13 @@ AssetPrototype.destructor = function() {
 };
 
 AssetPrototype.setSrc = function(src) {
+
     this.src = src;
+
+    if (!isNullOrUndefined(src) && this.assets) {
+        this.assets._notLoaded.push(this);
+    }
+
     return this;
 };
 

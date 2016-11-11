@@ -73,6 +73,7 @@ function Assets_add(_this, asset) {
         array = _this._array;
 
     if (!hash[name]) {
+        asset.assets = _this;
         hash[name] = asset;
         array[array.length] = asset;
 
@@ -103,6 +104,7 @@ function Assets_remove(_this, asset) {
         index;
 
     if (hash[name]) {
+        asset.assets = null;
         delete hash[name];
         array.splice(indexOf(array, asset), 1);
 
