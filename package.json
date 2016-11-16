@@ -32,6 +32,7 @@
   "dependencies": {
     "@nathanfaucett/array-for_each": "^0.0.1",
     "@nathanfaucett/class": "git://github.com/nathanfaucett/js-class.git",
+    "@nathanfaucett/event_listener": "0.0.2",
     "@nathanfaucett/http_error": "^0.0.2",
     "@nathanfaucett/index_of": "^0.0.1",
     "@nathanfaucett/is_array": "^0.0.1",

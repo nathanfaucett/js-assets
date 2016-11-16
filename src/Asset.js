@@ -1,5 +1,6 @@
 var Class = require("@nathanfaucett/class"),
     keys = require("@nathanfaucett/keys"),
+    indexOf = require("@nathanfaucett/index_of"),
     isArray = require("@nathanfaucett/is_array"),
     isObject = require("@nathanfaucett/is_object"),
     isString = require("@nathanfaucett/is_string"),
@@ -52,11 +53,12 @@ AssetPrototype.destructor = function() {
 };
 
 AssetPrototype.setSrc = function(src) {
+    var assets = this.assets;
 
     this.src = src;
 
-    if (!isNullOrUndefined(src) && this.assets) {
-        this.assets._notLoaded.push(this);
+    if (!isNullOrUndefined(src) && assets && indexOf(assets._notLoaded, this) === -1) {
+        assets._notLoaded.push(this);
     }
 
     return this;
